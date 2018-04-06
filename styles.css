@@ -22,9 +22,11 @@ button {
 }
 
 h3 {
-  padding-top: 1;
+   /*missing a unit for 1  ||||||||||||||*/
+  padding-top: 1rem;
   margin-top: 3rem;
-  border-top: solid 1px maron;
+  /*Maroon is spelled wrong ||||||||||||||*/
+  border-top: solid 1px maroon;
 }
 
 button, input[type="submit"] {

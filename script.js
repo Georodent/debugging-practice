@@ -34,7 +34,9 @@ window.onload = function(){
 // clears content in form fields, prints courseList objects to the page.
 // BUGFIX: This function isn't working properly- nothing gets output to the list on form submit
 function addACourse(){
+  event.preventDefault()
   var grade = parseFloat(this.elements["grade"].value);
+  console.log("grade: ", grade)
   /*
     TODO: validate that "grade" value is a number between 1.0 and 4.0, stop processing if it is not.
 
@@ -51,7 +53,7 @@ function addACourse(){
   }
 
   courseList.push(newCourse)
-
+  console.log("courseList: ", courseList)
   clearFormFields()
   outputList()
 }
@@ -74,11 +76,11 @@ function clearGPA(){
   document.getElementById("result").innerHTML = null;
 }
 
+
 // Clears content in form fields.
-function clearFormFields(){
+function clearFormFields(){  
   // TODO: implement this function.
 }
-
 // Clear out list of courses and all content shown on the page
 function clearData(){
   courseList = []
@@ -89,8 +91,18 @@ function clearData(){
 // Prints courseList objects to the page in a readable way.
 function outputList(){
   var list = document.getElementById("course-list");
+  list.innerHTML = ""
+  for(i = 0;i<courseList.length; i++){
+    console.log("name: ", courseList[i].name, "grade: ", courseList[i].grade)
+    
+    var newLi = document.createElement("li")
+    newLi.innerHTML = "name: " + courseList[i].name + "grade: " + courseList[i].grade
+    
+    list.appendChild(newLi)
+  }
+  
   /*
-    TODO: Clear the existing contents of the "list" element. Then, for each object in courseList,
+    TODO:. Then, for each object in courseList,
     create an li element that holds the course's name and grade, and append
     it to the "list" ul element.
   */
